@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoFoundr | Turn Your Vision Into Reality</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f5ff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-15px) translateX(15px);
+            }
+            50% {
+                transform: translateY(10px) translateX(-15px);
+            }
+            75% {
+                transform: translateY(-5px) translateX(5px);
+            }
+        }
+        
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #e9e4f8 0%, #d8d0f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: #3a1f71;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #3a1f71;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #3a1f71;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            color: #584b7e;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #4834d4 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(104, 92, 231, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(104, 92, 231, 0.4);
+            background: linear-gradient(135deg, #7d6eeb 0%, #5642e0 100%);
+        }
+        
+        .cta-button:active {
+            transform: translateY(1px);
+        }
+        
+        .future-comparison {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .comparison-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .future-column {
+            flex: 1;
+            padding: 40px;
+            min-width: 300px;
+        }
+        
+        .dream-future {
+            background: linear-gradient(135deg, #e0ddff 0%, #c8c2f8 100%);
+            position: relative;
+        }
+        
+        .dream-future::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #6c5ce7, #4834d4);
+        }
+        
+        .nightmare-future {
+            background: linear-gradient(135deg, #f8f8f8 0%, #eaeaea 100%);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #6c5ce7;
+        }
+        
+        .testimonial-section {
+            background: linear-gradient(135deg, #e0ddff 0%, #d4cff8 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-bg {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(104, 92, 231, 0.15) 0%, rgba(104, 92, 231, 0.05) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .testimonial-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #3a1f71;
+        }
+        
+        .quote-attribution {
+            font-weight: 600;
+            color: #4834d4;
+        }
+        
+        .final-cta {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f5ff 0%, #efeaff 100%);
+            border-radius: 20px;
+        }
+        
+        .final-cta h2 {
+            margin-bottom: 40px;
+        }
+        
+        .pulsing {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(104, 92, 231, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(104, 92, 231, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(104, 92, 231, 0);
+            }
+        }
+        
+        .feature-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .feature-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #4834d4 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-text {
+            flex-grow: 1;
+        }
+        
+        .feature-text h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: #3a1f71;
+        }
+        
+        .feature-text p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto 0;
+            padding-bottom: 40px;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #6c5ce7, #4834d4);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 50px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #6c5ce7;
+            border: 4px solid #d8d0f0;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-left::after {
+            right: -14px;
+        }
+        
+        .timeline-right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-right::after {
+            left: -14px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #3a1f71;
+        }
+        
+        .faq-section {
+            margin-top: 80px;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #3a1f71;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        footer {
+            background: #3a1f71;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #d8d0f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .copyright {
+            color: #a097c9;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-left, .timeline-right {
+                left: 0;
+                text-align: left;
+            }
+            
+            .timeline-left::after, .timeline-right::after {
+                left: 15px;
+                right: auto;
+            }
+        }
+
+        .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3a1f71;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo-subtext {
+    font-size: 0.7rem;
+    color: #6c5ce7;
+    font-weight: 500;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-left: 25px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #3a1f71;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #6c5ce7;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    padding: 8px 20px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #3a1f71;
+    cursor: pointer;
+}
+
+.hero {
+    padding-top: 80px;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #f5f0ff 0%, #eae4ff 100%);
+    border-left: 4px solid #6c5ce7;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.highlight-title {
+    color: #3a1f71;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.highlight-text {
+    margin-bottom: 0;
+}
+
+.content-divider {
+    height: 3px;
+    background: linear-gradient(to right, #6c5ce7, transparent);
+    margin: 60px 0;
+    border-radius: 2px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    margin: 15px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6c5ce7;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #584b7e;
+}
+
+.feature-box {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border-top: 4px solid #6c5ce7;
+}
+
+.feature-box-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #3a1f71;
+    position: relative;
+    display: inline-block;
+}
+
+.feature-box-title::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(to right, #6c5ce7, transparent);
+    bottom: -10px;
+    left: 0;
+}
+
+.feature-box-badge {
+    position: absolute;
+    top: -12px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.benefits-list {
+    margin: 20px 0;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.benefit-icon {
+    background: linear-gradient(135deg, #6c5ce7 0%, #4834d4 100%);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.benefit-content {
+    flex-grow: 1;
+}
+
+.benefit-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #3a1f71;
+}
+
+.benefit-text {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: #584b7e;
+}
+
+.countdown-container {
+    background: linear-gradient(135deg, #f5f0ff 0%, #eae4ff 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.countdown-text {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.countdown-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #3a1f71;
+}
+
+.countdown-timer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.countdown-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6c5ce7;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    color: #584b7e;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background: #6c5ce7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.testimonial-info {
+    flex-grow: 1;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #3a1f71;
+}
+
+.testimonial-company {
+    font-size: 0.9rem;
+    color: #6c5ce7;
+}
+
+.testimonial-rating {
+    color: #ffc107;
+    margin-top: 5px;
+}
+
+.pulse-notice {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin: 20px 0;
+    animation: pulse-bg 2s infinite;
+}
+
+@keyframes pulse-bg {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+}
+
+.hero-split {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    height: 350px;
+    max-width: 500px;
+}
+
+.hero-image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image-overlay {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40%;
+    height: 40%;
+    background: #6c5ce7;
+    border-radius: 10px;
+    transform: rotate(5deg);
+    z-index: -1;
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+    color: #584b7e;
+    font-size: 0.9rem;
+}
+
+.trust-badge-icon {
+    margin-right: 8px;
+    color: #6c5ce7;
+}
+
+.process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.process-step {
+    flex: 1;
+    min-width: 250px;
+    margin: 15px;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.process-step-number {
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
+    background: #6c5ce7;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.process-step-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #3a1f71;
+    padding-top: 5px;
+}
+
+.process-step-text {
+    font-size: 0.95rem;
+    color: #584b7e;
+}
+
+.hidden-on-mobile {
+    display: block;
+}
+
+.visible-on-mobile {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .hero-split {
+        flex-direction: column;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-item {
+        margin: 10px 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .hidden-on-mobile {
+        display: none;
+    }
+    
+    .visible-on-mobile {
+        display: block;
+    }
+}
+
+/* Styles for SVG Logo */
+.logo-svg {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-icon-primary {
+    fill: #6c5ce7;
+}
+
+.logo-icon-secondary {
+    fill: #ff6b6b;
+}
+
+/* Floating entry button */
+.float-entry {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background: linear-gradient(135deg, #6c5ce7 0%, #4834d4 100%);
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(104, 92, 231, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.float-entry:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(104, 92, 231, 0.7);
+}
+
+/* Unlock tip animation */
+.unlock-tip {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    z-index: 998;
+    font-size: 0.9rem;
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.unlock-tip.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.unlock-tip-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #3a1f71;
+    cursor: pointer;
+}
+
+/* Animate the funding section */
+.funding-animation {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+.funding-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.funding-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #6c5ce7, #4834d4);
+    transition: width 1.5s ease;
+}
+
+.funding-icons {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.funding-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #6c5ce7;
+    font-size: 1.2rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.funding-icon.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.funding-labels {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.funding-label {
+    font-size: 0.9rem;
+    color: #584b7e;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-align: center;
+    width: 80px;
+    margin-left: -15px;
+}
+
+.funding-label.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.funding-amounts {
+    position: absolute;
+    bottom: 130px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.funding-amount {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3a1f71;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.funding-amount.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* FOMO notification */
+.fomo-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    z-index: 998;
+    font-size: 0.9rem;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.fomo-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.fomo-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #6c5ce7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.fomo-content {
+    flex-grow: 1;
+}
+
+.fomo-action {
+    color: #6c5ce7;
+    font-weight: 600;
+}
+
+.fomo-time {
+    font-size: 0.8rem;
+    color: #584b7e;
+    margin-top: 5px;
+}
+
+.fomo-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: #3a1f71;
+    cursor: pointer;
+}
+
+/* Call to action button animation */
+@keyframes attention {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1.1);
+    }
+    10% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.05);
+    }
+    20% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.attention-button {
+    animation: attention 10s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6c5ce7;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4834d4;
+}
+    </style>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="logo-icon-primary" d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z"/>
+                    <path class="logo-icon-secondary" d="M70 50c0 11-9 20-20 20s-20-9-20-20h10c0 5.5 4.5 10 10 10s10-4.5 10-10h10z"/>
+                    <path class="logo-icon-secondary" d="M40 40c0-5.5 4.5-10 10-10s10 4.5 10 10h10c0-11-9-20-20-20s-20 9-20 20h10z"/>
+                </svg>
+                <div class="logo-text">
+                    CoFoundr
+                    <span class="logo-subtext">Vision to Reality</span>
+                </div>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="#journey" class="nav-link">Journey</a></li>
+                    <li class="nav-item"><a href="#mvp" class="nav-link">MVP Building</a></li>
+                    <li class="nav-item"><a href="#funding" class="nav-link">Funding</a></li>
+                    <li class="nav-item"><a href="#testimonial" class="nav-link">Success Stories</a></li>
+                    <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="https://brand.salestug.com/widget/booking/WHoEGwzIpCDRv0y9PViN" class="nav-link nav-cta">Book Now</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="particle-container" id="particles"></div>
+    
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-split">
+                <div class="hero-content">
+                    <h1>The World Needs Your Idea. Don't Let It Die Inside You. 🚀</h1>
+                    <p>Launch your startup faster, smarter, with expert-backed clarity — or watch months slip by without action. Turn your vision into reality with proven strategies and support that successful founders rely on.</p>
+                    
+                    <div class="pulse-notice">
+                        <i class="fas fa-bell"></i> Limited spots available: Only 3 strategy sessions remain this week!
+                    </div>
+                    
+                    <a href="https://brand.salestug.com/widget/booking/WHoEGwzIpCDRv0y9PViN" class="cta-button attention-button">Claim Your Free Founder Strategy Session →</a>
+                    
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <i class="fas fa-check-circle trust-badge-icon"></i>
+                            <span>150+ Startups Launched</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-check-circle trust-badge-icon"></i>
+                            <span>$42M+ Raised</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-check-circle trust-badge-icon"></i>
+                            <span>4.9/5 Founder Rating</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="hero-image-overlay"></div>
+                    <img src="1.avif" alt="Founder Success" class="hero-image-main">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="future">
+        <div class="container">
+            <h2>Your Startup Journey: Two Possible Futures</h2>
+            <p>The path you choose today determines where you'll be tomorrow. Which future will you create?</p>
+            
+            <div class="future-comparison">
+                <div class="comparison-container">
+                    <div class="future-column dream-future">
+                        <h3>6 Months From Now: Thriving</h3>
+                        <p>You're watching real users interact with your MVP. Investors are showing interest in your vision. Your startup has momentum, and you're making progress daily.</p>
+                        <p>Your idea is no longer just a concept—it's a living, growing business with potential. You feel confident, purposeful, and excited about the road ahead.</p>
+                        <p>The decision you made to get expert guidance has accelerated your timeline by months, saving you from costly mistakes and dead ends.</p>
+                    </div>
+                    <div class="future-column nightmare-future">
+                        <h3>6 Months From Now: Wondering</h3>
+                        <p>Your idea is still just that—an idea. The excitement has faded as you've faced technical hurdles, unanswered questions, and uncertainty about next steps.</p>
+                        <p>You see others launching similar concepts while you're still planning. The market window you identified is narrowing, and doubt has replaced your initial confidence.</p>
+                        <p>You're questioning if you have what it takes, wondering if you'll ever break through the planning phase into actual execution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="journey">
+        <div class="container">
+            <h2>Your Transformation Journey</h2>
+            <p>From idea to thriving startup, we're with you every step of the way.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h4>Step 1: Discovery Call</h4>
+                        <p>We'll unpack your vision, identify the core value proposition, and chart a clear path forward.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h4>Step 2: Strategic Blueprint</h4>
+                        <p>Receive a customized action plan that outlines your MVP features, target market, and development timeline.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h4>Step 3: MVP Development</h4>
+                        <p>Watch your idea transform into a working product that you can share, test, and refine.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h4>Step 4: Launch & Growth</h4>
+                        <p>Deploy your solution to real users and implement strategies for traction and expansion.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h4>Step 5: Investor Preparation</h4>
+                        <p>Refine your pitch, prepare your materials, and connect with our network of early-stage investors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shortcut">
+        <div class="container">
+            <h2>The Founder's Shortcut</h2>
+            <p>Every unicorn startup you admire had support.<br>
+            Every legendary founder you respect had mentors.<br>
+            They moved faster because they didn't walk alone.<br>
+            <strong>Why should you?</strong></p>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Idea Clarity</h3>
+                    <p>Transform your vision from a vague concept into a clear, actionable plan. End the cycle of doubt and confusion that keeps most ideas from ever launching.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>MVP Building</h3>
+                    <p>We build your first working product that users can interact with. Turn your dream into reality with a professional MVP that validates your concept.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Growth Strategy</h3>
+                    <p>Develop a roadmap for user acquisition and scaling. Create a product that actually grows instead of becoming another abandoned project.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Investor Access</h3>
+                    <p>Connect with early-stage investors who can fuel your growth. We'll help you prepare for fundraising and make key introductions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>MVP Redesign</h3>
+                    <p>Already have an MVP but not seeing results? We'll transform your existing product into something users love and investors notice.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Lifetime Support</h3>
+                    <p>Weekly calls and ongoing guidance ensure you're never alone on your journey. Build with confidence knowing expert help is always available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="testimonial">
+        <div class="container">
+            <div class="testimonial-section">
+                <div class="testimonial-bg"></div>
+                <div class="testimonial-container">
+                    <div class="testimonial-quote">
+                        "Six months ago, I was stuck in endless planning and doubt. After working with this team, my idea is now a growing product with real users and investor interest. The guidance and MVP development accelerated my journey by at least a year."
+                    </div>
+                    <div class="quote-attribution">
+                        — Alex Chen, Founder of TechFlow (Raised $750K seed round)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Expert Technical Team</h4>
+                        <p>Work with developers who have built successful startups and know what investors look for.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Weekly Strategy Calls</h4>
+                        <p>Regular guidance ensures you're always moving in the right direction with confidence.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Full Product Development</h4>
+                        <p>From MVP to full-featured platform, we scale with you as your startup grows.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">
+                        <h4>Investor Network</h4>
+                        <p>Direct connections to angels and VCs looking for promising early-stage startups.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq">
+        <div class="container">
+            <h2>Questions Founders Ask</h2>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does it take to build an MVP?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most MVPs can be completed within 4-8 weeks, depending on complexity. Our approach focuses on launching quickly with core features that validate your concept, then iterating based on real user feedback.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I already have a partial MVP?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We specialize in redesigning and enhancing existing MVPs to make them more scalable, user-friendly, and investor-ready. Our team will evaluate your current product and recommend the most efficient path forward.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you take equity in exchange for services?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We primarily work on a fee-for-service basis, but in select cases, we consider hybrid arrangements with a reduced fee plus equity. This is evaluated on a case-by-case basis during our initial consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens during the free strategy session?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>During this 45-minute call, we'll discuss your vision, identify key challenges, outline potential solutions, and determine if we're the right partner for your journey. You'll receive valuable insights regardless of whether we work together.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do you connect founders with investors?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We maintain relationships with a network of angel investors and early-stage VCs who trust our vetting process. Once your MVP demonstrates traction, we'll help refine your pitch and make warm introductions to relevant investors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="final-cta">
+        <div class="container">
+            <div class="final-cta">
+                <h2>The World is Built by Those Who Move — Not Those Who Wait.</h2>
+                <p>Which version of yourself wins today?</p>
+                <a href="https://brand.salestug.com/widget/booking/WHoEGwzIpCDRv0y9PViN" class="cta-button pulsing">Secure Your Strategy Session Before It's Gone →</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Success Stories</a>
+                <a href="#" class="footer-link">Services</a>
+                <a href="#" class="footer-link">Blog</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            <div class="copyright">
+                © 2025 All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create particles
+        function createParticles() {
+            const particleContainer = document.getElementById('particles');
+            const colors = ['#e0ddff', '#d4cff8', '#c8c2f8', '#b8b0f0'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 150 + 50;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = color;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${15 + Math.random() * 15}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particleContainer.appendChild(particle);
+            }
+        }
+        
+        // Handle scroll animations
+        function handleScroll() {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Handle FAQ toggles
+        function setupFAQs() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setupFAQs();
+            
+            // Make first section visible immediately
+            document.getElementById('hero').classList.add('visible');
+            
+            // Set up scroll animations
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial check
+        });
+    </script>
+</body>
+</html>
